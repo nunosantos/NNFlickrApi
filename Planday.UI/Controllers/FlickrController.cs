@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Planday.Core.Interfaces;
 
 namespace Planday.UI.Controllers
@@ -14,9 +15,11 @@ namespace Planday.UI.Controllers
     public class FlickrController : ControllerBase
     {
         private readonly IUnitOfWork _connector;
+        
         public FlickrController(IUnitOfWork connector)
         {
             _connector = connector;
+          
         }
 
         /// <summary>
