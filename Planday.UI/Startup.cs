@@ -29,7 +29,6 @@ namespace Planday.UI
         {
 
             services.AddControllersWithViews();
-            services.AddScoped<IApiConnector, ApiConnector>();
             services.AddScoped<IServiceLogger, Logger>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             

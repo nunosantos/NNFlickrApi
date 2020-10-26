@@ -13,32 +13,41 @@ namespace Planday.Core.Services
     {
         private readonly IServiceLogger _logger;
         private readonly IHttpClientFactory _clientFactory;
-        private readonly IConfiguration _configuration;
+        public IConfiguration _configuration;
+        public string _url;
+        public string _path;
 
-        public GenericApiConnector(IServiceLogger logger, IHttpClientFactory clientFactory, IConfiguration configuration)
+        public GenericApiConnector(IServiceLogger logger, IHttpClientFactory clientFactory, IConfiguration configuration, string url, string path)
         {
             _logger = logger;
             _clientFactory = clientFactory;
             _configuration = configuration;
+            _url = url;
+            _path = path;
         }
 
+        /// <summary>
+        /// Generic Get method which returns a JSON object of type T
+        /// </summary>
+        /// <param name="searchString">The string to be used in the query string</param>
+        /// <param name="applicationName">the name of the http client instance</param>
+        /// <returns></returns>
         public async Task<T> GetAsync(string searchString,string applicationName)
         {
             try
             {
                 if (!string.IsNullOrWhiteSpace(searchString))
                 {
-                    var url = _configuration.GetSection("ApiCallSettings").GetSection("url").Value;
-                    url = url.Replace("{searchString}", searchString);
+                    
+                    _url = _url.Replace("{searchString}", searchString);
                     using (var client = _clientFactory.CreateClient(applicationName))
                     {
-                        var result = await client.GetStringAsync(url);
-                        result = result.Replace("jsonFlickrApi","").Replace("(", "").Replace(")", "");
+                        var response = await client.GetStringAsync(_url);
+                        response = response.Replace("jsonFlickrApi","").Replace("(", "").Replace(")", "");
                         
-                        
-                        T value = JsonConvert.DeserializeObject<T>(result);
-                        _logger.LogToFile(result);
-                        return value;
+                        T objectValue = JsonConvert.DeserializeObject<T>(response);
+                        _logger.LogToFile(response, _path);
+                        return objectValue;
                     }
                 }
                 else
@@ -48,7 +57,7 @@ namespace Planday.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogToFile(ex.Message);
+                _logger.LogToFile(ex.Message, _path);
                 return null;
             }
             

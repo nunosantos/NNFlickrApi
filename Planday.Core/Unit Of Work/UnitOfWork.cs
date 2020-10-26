@@ -14,19 +14,26 @@ namespace Planday.Core.Unit_Of_Work
         private readonly IHttpClientFactory _clientFactory;
         public IGenericApiConnector<Root> _root;
         private readonly IConfiguration _configuration;
+        public string _url;
+        public string _path;
 
         public UnitOfWork(IServiceLogger serviceLogger, IHttpClientFactory clientFactory, IConfiguration configuration)
         {
             _logger = serviceLogger;
             _clientFactory = clientFactory;
             _configuration = configuration;
+            _url = _configuration.GetSection("ApiCallSettings").GetSection("url").Value;
+            _path = _configuration.GetSection("LogSettings").GetSection("path").Value;
         }
 
+        /// <summary>
+        /// Unit of work to return Generic API of type root
+        /// </summary>
         public IGenericApiConnector<Root> SearchRootData
         {
             get 
             {
-                return _root ?? (_root = new GenericApiConnector<Root>(_logger,_clientFactory,_configuration));
+                return _root ?? (_root = new GenericApiConnector<Root>(_logger,_clientFactory,_configuration,_url, _path));
             }
         }
     }
