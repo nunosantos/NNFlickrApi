@@ -6,6 +6,10 @@ namespace Planday.Core.Services
 {
     public class Logger : IServiceLogger
     {
+        /// <summary>
+        /// Logs data to the filesystem
+        /// </summary>
+        /// <param name="data">The data which needs to be persisted</param>
         public void LogToFile(string data)
         {
             Log.Logger = new LoggerConfiguration()

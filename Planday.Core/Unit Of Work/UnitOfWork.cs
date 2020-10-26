@@ -24,11 +24,13 @@ namespace Planday.Core.Unit_Of_Work
             _url = _configuration.GetSection("ApiCallSettings").GetSection("url").Value;
         }
 
+        /// <summary>
+        /// Unit of work to return Generic API of type root
+        /// </summary>
         public IGenericApiConnector<Root> SearchRootData
         {
             get 
             {
-                
                 return _root ?? (_root = new GenericApiConnector<Root>(_logger,_clientFactory,_configuration,_url));
             }
         }

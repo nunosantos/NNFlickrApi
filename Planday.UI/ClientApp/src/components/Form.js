@@ -9,8 +9,9 @@ export class Form extends Component {
 
 
     handleSubmit = async (event) => {
+        let url = window.location.href;
         event.preventDefault();
-        const response = await fetch('https://localhost:44318/api/flickr/' + this.state.searchString);
+        const response = await fetch(url+ 'api/flickr/' + this.state.searchString);
         const data = await response.json();
         this.setState({ flickr: data.photos.photo, loading: false });
     };

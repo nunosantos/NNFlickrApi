@@ -74,49 +74,52 @@ namespace Planday.Tests
                 Content = data
             };
             mockFactory = new Mock<IHttpClientFactory>();
+            mockLog = new Mock<IServiceLogger>();
+            mockConfiguration = new Mock<IConfiguration>();
+            mockGenericApi = new Mock<IGenericApiConnector<Root>>();
+            _unitOfWork = new Mock<IUnitOfWork>();
+
             handlerMock.Protected().Setup<Task<HttpResponseMessage>>(
                   "SendAsync",
                   ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
                .ReturnsAsync(response);
-
-            mockLog = new Mock<IServiceLogger>();
+            
             mockLog.Setup(x => x.LogToFile(It.IsAny<string>()));
-
-            mockConfiguration = new Mock<IConfiguration>();
-
-            mockGenericApi = new Mock<IGenericApiConnector<Root>>();
 
             var httpClient = new HttpClient(handlerMock.Object);
             mockFactory.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(httpClient);
-            _unitOfWork = new Mock<IUnitOfWork>();
-
-            
         }
 
         [Fact]
-        public void GetPictures_CheckIfControllerReturns400_WhenInputStringIsPopulated()
+        public void GetPictures_CheckIfControllerReturns400_WhenInputStringIsEmpty()
         {
-           
-            //_unitOfWork.Setup(x => x.SearchRootData).Returns((GenericApiConnector<Root>) null);
+            //Arramge
             var controller = new FlickrController(_unitOfWork.Object);
+
+            //Act
             var response = controller.GetPicturesAsync("");
             var value = response.Result as BadRequestResult;
+
+            //Assert
             Assert.Equal(400, value.StatusCode);            
         }
 
         [Fact]
         public async Task GetPictures_CheckIfControllerReturns200_WhenInputStringIsPopulatedAsync()
         {
+            //Arrange
             var mockConfSection = new Mock<IConfigurationSection>();
             mockConfSection.SetupGet(m => m[It.Is<string>(s => s == "url")]).Returns("mock value");
-            
             mockConfiguration.Setup(x => x.GetSection("ApiCallSettings")).Returns(mockConfSection.Object);
-
             var url = @"https://www.flickr.com/{searchString}&tag_mode=&format=json";
             _unitOfWork.Setup(x => x.SearchRootData).Returns(new GenericApiConnector<Root>(mockLog.Object,mockFactory.Object,mockConfiguration.Object,url));
+
+            //Act
             var controller = new FlickrController(_unitOfWork.Object);
             var response = controller.GetPicturesAsync("some value");
             var value = response.Result as OkObjectResult;
+
+            //Assert
             Assert.Equal(200, value.StatusCode);
         }
     }
