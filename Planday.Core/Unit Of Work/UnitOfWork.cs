@@ -15,6 +15,7 @@ namespace Planday.Core.Unit_Of_Work
         public IGenericApiConnector<Root> _root;
         private readonly IConfiguration _configuration;
         public string _url;
+        public string _path;
 
         public UnitOfWork(IServiceLogger serviceLogger, IHttpClientFactory clientFactory, IConfiguration configuration)
         {
@@ -22,6 +23,7 @@ namespace Planday.Core.Unit_Of_Work
             _clientFactory = clientFactory;
             _configuration = configuration;
             _url = _configuration.GetSection("ApiCallSettings").GetSection("url").Value;
+            _path = _configuration.GetSection("LogSettings").GetSection("path").Value;
         }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace Planday.Core.Unit_Of_Work
         {
             get 
             {
-                return _root ?? (_root = new GenericApiConnector<Root>(_logger,_clientFactory,_configuration,_url));
+                return _root ?? (_root = new GenericApiConnector<Root>(_logger,_clientFactory,_configuration,_url, _path));
             }
         }
     }

@@ -15,13 +15,15 @@ namespace Planday.Core.Services
         private readonly IHttpClientFactory _clientFactory;
         public IConfiguration _configuration;
         public string _url;
+        public string _path;
 
-        public GenericApiConnector(IServiceLogger logger, IHttpClientFactory clientFactory, IConfiguration configuration, string url)
+        public GenericApiConnector(IServiceLogger logger, IHttpClientFactory clientFactory, IConfiguration configuration, string url, string path)
         {
             _logger = logger;
             _clientFactory = clientFactory;
             _configuration = configuration;
             _url = url;
+            _path = path;
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace Planday.Core.Services
                         response = response.Replace("jsonFlickrApi","").Replace("(", "").Replace(")", "");
                         
                         T objectValue = JsonConvert.DeserializeObject<T>(response);
-                        _logger.LogToFile(response);
+                        _logger.LogToFile(response, _path);
                         return objectValue;
                     }
                 }
@@ -55,7 +57,7 @@ namespace Planday.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogToFile(ex.Message);
+                _logger.LogToFile(ex.Message, _path);
                 return null;
             }
             

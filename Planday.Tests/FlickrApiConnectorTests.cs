@@ -84,7 +84,7 @@ namespace Planday.Tests
                   ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
                .ReturnsAsync(response);
             
-            mockLog.Setup(x => x.LogToFile(It.IsAny<string>()));
+            mockLog.Setup(x => x.LogToFile(It.IsAny<string>(), It.IsAny<string>()));
 
             var httpClient = new HttpClient(handlerMock.Object);
             mockFactory.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(httpClient);
