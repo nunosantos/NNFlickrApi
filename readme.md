@@ -49,12 +49,15 @@ Name | Description
 ### Screenshots
 
 In app testing - main window
+
 ![flickr1](https://user-images.githubusercontent.com/3398578/97221251-f2d8e500-17cc-11eb-82d1-29af73ef7094.png)
 
 In app testing - search input
+
 ![flickr2](https://user-images.githubusercontent.com/3398578/97221232-ed7b9a80-17cc-11eb-9e64-e09834643637.png)
 
 API documentation
+
 ![flickr3](https://user-images.githubusercontent.com/3398578/97221265-f8362f80-17cc-11eb-9569-79f6c136cb70.png)
 ## Creator
 
