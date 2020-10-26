@@ -29,12 +29,17 @@ namespace Planday.UI.Controllers
         {
             try
             {
-                var result = await _connector.SearchRootData.GetAsync(searchString,"flickr");
-                if (result != null)
+                
+                if (!string.IsNullOrWhiteSpace(searchString))
                 {
-                    return Ok(result);
+                    var result = await _connector.SearchRootData.GetAsync(searchString, "flickr");
+                    if (result != null)
+                    {
+                        return Ok(result);
+                    }
+                    return NoContent();
                 }
-                return NoContent();
+                return BadRequest();
             }
             catch (Exception)
             {
