@@ -1,0 +1,8 @@
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\bin\Debug\netstandard2.0\FlickrAPI.Core.deps.json
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\bin\Debug\netstandard2.0\FlickrAPI.Core.dll
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\bin\Debug\netstandard2.0\FlickrAPI.Core.pdb
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\obj\Debug\netstandard2.0\FlickrAPI.Core.AssemblyInfoInputs.cache
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\obj\Debug\netstandard2.0\FlickrAPI.Core.AssemblyInfo.cs
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\obj\Debug\netstandard2.0\FlickrAPI.Core.csproj.CoreCompileInputs.cache
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\obj\Debug\netstandard2.0\FlickrAPI.Core.dll
+C:\Users\Nuno\Documents\App back ups\FlickrApi\FlickrAPI.Core\obj\Debug\netstandard2.0\FlickrAPI.Core.pdb
