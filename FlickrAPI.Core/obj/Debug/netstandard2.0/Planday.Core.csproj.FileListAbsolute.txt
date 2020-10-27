@@ -1,0 +1,9 @@
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\bin\Debug\netstandard2.0\Planday.Core.deps.json
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\bin\Debug\netstandard2.0\Planday.Core.dll
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\bin\Debug\netstandard2.0\Planday.Core.pdb
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.AssemblyInfoInputs.cache
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.AssemblyInfo.cs
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.dll
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.pdb
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.csproj.CoreCompileInputs.cache
+C:\Users\Nuno\source\repos\Planday.UI\Planday.Core\obj\Debug\netstandard2.0\Planday.Core.csprojAssemblyReference.cache
