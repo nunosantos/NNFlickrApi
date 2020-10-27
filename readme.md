@@ -59,7 +59,7 @@ In app testing - search input
 
 API documentation
 
-![flickr3](https://user-images.githubusercontent.com/3398578/97221265-f8362f80-17cc-11eb-9569-79f6c136cb70.png)
+![flickr4](https://user-images.githubusercontent.com/3398578/97339128-7e607d80-1882-11eb-81fc-5a0260081c1b.png)
 ## Creator
 
 Nuno Santos
