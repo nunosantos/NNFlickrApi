@@ -93,7 +93,7 @@ namespace FlickrAPI.Tests
         [Fact]
         public void GetPictures_CheckIfControllerReturns400_WhenInputStringIsEmpty()
         {
-            //Arramge
+            //Arrange
             var controller = new FlickrController(_unitOfWork.Object);
 
             //Act
